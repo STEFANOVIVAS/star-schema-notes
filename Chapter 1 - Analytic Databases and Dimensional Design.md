@@ -20,3 +20,9 @@ A dimensional design organizes facts and dimensions for storage in a database. I
 - Elements that are aggregated, summarized, or subtotaled are facts.
 
 ## The Star Schema
+
+A dimensional design for a relational database is called a star schema. Related dimensions are grouped as columns in dimension tables, and the facts are stored as columns in a fact table. The star schema gets its name from its appearance: when drawn with the fact table in the center, it looks like a star or asterisk.
+
+[<img src="star schema.png">](https://github.com/STEFANOVIVAS/star-schema-notes/)
+
+
