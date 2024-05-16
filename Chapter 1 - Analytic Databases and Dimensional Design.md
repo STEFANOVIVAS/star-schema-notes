@@ -23,6 +23,24 @@ A dimensional design organizes facts and dimensions for storage in a database. I
 
 A dimensional design for a relational database is called a star schema. Related dimensions are grouped as columns in dimension tables, and the facts are stored as columns in a fact table. The star schema gets its name from its appearance: when drawn with the fact table in the center, it looks like a star or asterisk.
 
-[<img src="star schema.png">](https://github.com/STEFANOVIVAS/star-schema-notes/)
+[<img src="star schema.png.png">](https://github.com/STEFANOVIVAS/star-schema-notes/)
+
+### Dimensions tables
+
+- In a star schema, a dimension table contains columns representing dimensions, which will provide context for facts.
+- In queries and reports, the dimensions will be used to specify how facts will be rolled up (their level of aggregation) and how to be filtered.
+- As opposed to an ER model, dimensional tables are not in third normal form.
+- Designers do occasionally perform additional normalization within dimensions, although they usually avoid doing so (Snowflake schema).
+  
+### Keys
+
+- In a star schema, each dimension table is given a surrogate key, which is its unique identifier or primary key of the dimension table.
+- As opposed to surrogate keys we have natural keys, which are de primary keys from operational systems.
+- The separation of surrogate keys and natural keys allows the data warehouse to track changes, even if the originating operational system does not.
+  
+### Fact tables
+
+- In addition to presenting the facts, the fact table includes surrogate keys that refer to each of the associated dimension tables.
+- Each row in the fact table stores facts at a specific level of detail, which is known as the fact table’s grain.
 
 
