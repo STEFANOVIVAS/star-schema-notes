@@ -9,4 +9,14 @@
 - It's not intended to be queried directly by analytic applications, business intelligence tools, or the like.
 - Instead, its purpose is to feed additional data stores dedicated to a variety of analytic systems (Data marts), for which Inmon advocates the use of dimensional design.
 - The enterprise data warehouse is usually stored in a relational database management system, and Inmon advocates the use of third normal form database design.
-  
+
+
+  [<img src="corporate information factory.png">](https://github.com/STEFANOVIVAS/star-schema-notes/)
+
+
+## Kimball’s Dimensional Data Warehouse
+
+- It's called dimensional data warehouse.
+- Shares many characteristics in common with corporate information factory.
+- Different from Inmon's perspective (ER modeling), the Integrated repository of atomic data is designed according to the principles of dimensional modeling (Star schema).
+- The dimensional data warehouse may be accessed directly by analytic systems.
