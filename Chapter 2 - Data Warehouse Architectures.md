@@ -26,5 +26,12 @@
 
 ## Stand-Alone Data Marts
 
+- Allows rapid and inexpensive results in the short term, they can give rise to long-term costs and inefficiencies.
+- The stand-alone data mart is an analytic data store that has not been designed in an enterprise context.
+- The data mart may employ dimensional design,an entity-relationship model, or some other form of design.
+- Analytic tools or applications query it directly, bringing information to end users. 
+- Lacking a repository for granular data, a data mart may fail to answer a future question that requires more detail than originally anticipated.
+- Due to his characteristics forms Islands of information.
+- Developed to satisfy a narrow set of needs, they fail to support cross-functional analysis.
 
- [<img src="data marts.png">](https://github.com/STEFANOVIVAS/star-schema-notes/)
+[<img src="data marts.png">](https://github.com/STEFANOVIVAS/star-schema-notes/)
