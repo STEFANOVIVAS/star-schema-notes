@@ -35,3 +35,10 @@
 - Developed to satisfy a narrow set of needs, they fail to support cross-functional analysis.
 
 [<img src="data marts.png">](https://github.com/STEFANOVIVAS/star-schema-notes/)
+
+## Comparison between approaches
+
+[<img src="data warehouse architecture.png">](https://github.com/STEFANOVIVAS/star-schema-notes/)
+
+[<img src="characteristics of each architecture.png">](https://github.com/STEFANOVIVAS/star-schema-notes/)
+
