@@ -20,3 +20,11 @@
 - Shares many characteristics in common with corporate information factory.
 - Different from Inmon's perspective (ER modeling), the Integrated repository of atomic data is designed according to the principles of dimensional modeling (Star schema).
 - The dimensional data warehouse may be accessed directly by analytic systems.
+
+[<img src="dimensional design.png">](https://github.com/STEFANOVIVAS/star-schema-notes/)
+
+
+## Stand-Alone Data Marts
+
+
+ [<img src="data marts.png">](https://github.com/STEFANOVIVAS/star-schema-notes/)
