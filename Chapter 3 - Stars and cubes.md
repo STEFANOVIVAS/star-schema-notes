@@ -41,8 +41,22 @@ Every fact table represents a business process by capturing measurements that de
 - In most cases, candidates for degenerate dimensions are better placed in junk dimensions, with the exception of transaction identifiers.
 
 ## Slowly Changing Dimensions
+In every dimensional design, it is crucial to identify how changes in source data will be represented in dimension tables.
 
+### Type 1 Change
+When the source of a dimension value changes, and it is not necessary to preserve its history in the star schema, a type 1 response is employed. The dimension is simply overwritten with the new value. This technique is commonly employed in situations where a source data element is being changed to correct an error.
 
+A type 1 change has an important effect on facts, one that is often overlooked. When a record is updated in a dimension table, the context for existing facts is restated.
+
+### Type 2 Change
+
+The second method for responding to a change in source data is to insert a new record into the dimension table. Any previously existing records are unchanged. This type 2 response preserves context for facts that were associated with the old value, while allowing new facts to be associated with the new value.
+
+This type 2 response has the effect of creating “versions” of one registry in the dimension table. Where there was previously one row representing it, there are now two. This “versioning” is made possible because the dimension table does not rely on the natural key, customer_id, as its unique identifier.
+
+Type 2 changes preserve the dimensional detail surrounding facts. They may confuse users, however, by appearing to duplicate information in dimension tables. Avoid this confusion by issuing browse queries that select distinct values, and by offering a flag to indicate whether each row represents the current version for its natural key value.
+
+Although the type 2 change preserves the historic context of facts, it does not preserve history in the dimension. It is easy to see that a given natural key has taken on multiple representations in the dimension, but we do not know when each of these representations was correct. However, this problem is easily rectified by adding a date stamp to each version of a dimension registry. This technique allows the dimension to preserve both the history of facts and the history of dimensions. 
 
 
 
