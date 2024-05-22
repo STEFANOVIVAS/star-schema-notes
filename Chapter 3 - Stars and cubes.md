@@ -58,6 +58,23 @@ Type 2 changes preserve the dimensional detail surrounding facts. They may confu
 
 Although the type 2 change preserves the historic context of facts, it does not preserve history in the dimension. It is easy to see that a given natural key has taken on multiple representations in the dimension, but we do not know when each of these representations was correct. However, this problem is easily rectified by adding a date stamp to each version of a dimension registry. This technique allows the dimension to preserve both the history of facts and the history of dimensions. 
 
+## Cubes
+
+Dimensional models are not always implemented in relational databases. A multidimensional database, or MDB, stores dimensional information in a format called a cube. The basic concept behind a cube is to precompute the various combinations of dimension values and fact values so they can be studied interactively.
+
+### Multidimensional Storage vs. Relational Storage
+
+- A cube allows users to change their perspective on the data interactively, adding or removing attributes to or from their view and receiving instantaneous feedback (OLAP).
+- In contrast, a star schema is interacted with through a query-and-response paradigm so, each change in the information detail on display requires the issuance of a new query.
+- MDBs were providing running totals, rankings and other statistical operations long before these capabilities were added to SQL.
+- As the number of dimensions and their values increase, the number of possible combinations that must be precomputed explodes, limiting the ability to scale.
+
+### Cubes and the Data Warehouse
+
+- Used as a primary data store, the cube replaces a star schema to store dimensional data; as a derived data store, it supplements a star.
+- Typically, the cube will replace relational storage as the primary data store in specific subject areas where the data sets are smaller.
+- Stars and cubes work well together.
+- If you build a star, you can take advantage of the scalability of the relational database to store very granular and detailed information. From this detail, you can build cubes to support an interactive query experience.
 
 
 
