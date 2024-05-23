@@ -15,7 +15,7 @@ focus for planning enterprise analytic capability.
 - When the attributes of one are a subset of another, drilling across may also be possible.
 - Corresponding dimension tables should provide consistent results when substituted for one another. In terms of content, this requires that they contain the same set of rows, that corresponding rows share the same surrogate key values, and that slow change processing rules have been applied consistently. 
 
-![Stars common atributes](https://github.com/STEFANOVIVAS/star-schema-notes/blob/main/stars_common_atributes.png)
+![Stars common atributes](https://github.com/STEFANOVIVAS/star-schema-notes/blob/main/images/stars_common_atributes.png)
 
 ## Conformed Dimensions
 
