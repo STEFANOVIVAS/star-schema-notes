@@ -17,4 +17,31 @@ specific shippers, while order quantities are not.
 
 When a single fact table tracks two or more processes, let's say orders and shipments, problems occur when someone is interested in studying only one process. In this case, the process being examined is shipments, and the problem is evident in the final row of the report. Although a certain product has not shipped during the reporting period, it appears on the report, with a quantity_shipped of 0, cause we have an order for it.
 
+## Analyzing Facts from More than One Fact Table
+
+While analysis of individual processes is useful, the ability to compare them is equally important. Some of the most powerful analytics work across process boundaries. Examples include the comparison of forecasts to actuals, production to orders, orders to shipments, and so forth.
+
+- When comparing facts from different fact tables, it is important not to collect them in the same SQL select clause. Doing so risks double counting, or worse. Instead, the information must be gathered in a two-step process called drilling across.
+- The first step summarizes facts from each star at a common level of detail and the second step combines them.
+- The term "drill across" is meant to describe crossing multiple processes.
+- You can also use drill-across techniques to query a single star more than once, producing useful comparison reports.
+- For all of this to work, it is important that the common dimensions be the same in each database, both in terms of structure and content (Conformed dimensions)
+- In terms of structure, their presence in each star allows the common dimensions to be retrieved by each phase 1 query.
+- In terms of content, the identical representation of dimension values enables merging of the intermediate results during Phase 2.
+
+![Drilling Across](https://github.com/STEFANOVIVAS/star-schema-notes/blob/main/drilling_across.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
