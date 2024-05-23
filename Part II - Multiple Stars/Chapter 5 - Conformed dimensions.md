@@ -19,5 +19,26 @@ focus for planning enterprise analytic capability.
 
 ## Conformed Dimensions
 
+When dimension tables exhibit the compatibility necessary to support drilling across, they are conformed dimensions. Identical dimensions ensure conformance, but conformance can take several other forms as well. Fact tables and conformed dimensions can be planned and documented in a matrix format and serve as the blueprint for incremental implementation.
+
+### Types of Dimensional Conformance
+
+- Shared Dimension Tables
+- Conformed Rollups (When the dimension attributes from one table are a subset of those from another, and the common attributes share the same structure and content)
+- Degenerate Dimensions
+- Overlapping Dimensions (Non-identical dimension tables conform through a set of overlapping attributes)
+
+**
+
+  ![Base dimensional table x Conformed rollup](https://github.com/STEFANOVIVAS/star-schema-notes/blob/main/images/conformed_rollup.png)
+
+
+
+
+
+
+
+
+
 
 
