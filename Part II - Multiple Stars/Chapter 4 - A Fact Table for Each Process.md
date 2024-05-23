@@ -29,7 +29,7 @@ While analysis of individual processes is useful, the ability to compare them is
 - In terms of structure, their presence in each star allows the common dimensions to be retrieved by each phase 1 query.
 - In terms of content, the identical representation of dimension values enables merging of the intermediate results during Phase 2.
 
-![Drilling Across](https://github.com/STEFANOVIVAS/star-schema-notes/blob/main/drilling_across.png)
+![Drilling Across](https://github.com/STEFANOVIVAS/star-schema-notes/blob/main/images/drilling_across.png)
 
 
 
