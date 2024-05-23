@@ -10,7 +10,7 @@
 - Instead, its purpose is to feed additional data stores dedicated to a variety of analytic systems (Data marts), for which Inmon advocates the use of dimensional design.
 - The enterprise data warehouse is usually stored in a relational database management system, and Inmon advocates the use of third normal form database design.
 
-![Corporate information factory](https://github.com/STEFANOVIVAS/star-schema-notes/blob/main/corporate_information_factory.png)
+![Corporate information factory](https://github.com/STEFANOVIVAS/star-schema-notes/blob/main/images/corporate_information_factory.png)
   
 
 
@@ -21,7 +21,7 @@
 - Different from Inmon's perspective (ER modeling), the Integrated repository of atomic data is designed according to the principles of dimensional modeling (Star schema).
 - The dimensional data warehouse may be accessed directly by analytic systems.
 
-![Corporate information factory](https://github.com/STEFANOVIVAS/star-schema-notes/blob/main/dimensional_design.png)
+![Corporate information factory](https://github.com/STEFANOVIVAS/star-schema-notes/blob/main/images/dimensional_design.png)
 
 
 ## Stand-Alone Data Marts
@@ -34,13 +34,13 @@
 - Due to his characteristics forms Islands of information.
 - Developed to satisfy a narrow set of needs, they fail to support cross-functional analysis.
 
-![Data marts](https://github.com/STEFANOVIVAS/star-schema-notes/blob/main/data_marts.png)
+![Data marts](https://github.com/STEFANOVIVAS/star-schema-notes/blob/main/images/data_marts.png)
 
 
 
 ## Comparison between approaches
 
-![Data warehouse architecture](https://github.com/STEFANOVIVAS/star-schema-notes/blob/main/data_warehouse_architecture.png)
+![Data warehouse architecture](https://github.com/STEFANOVIVAS/star-schema-notes/blob/main/images/data_warehouse_architecture.png)
 
-![Characteristics of each architecture](https://github.com/STEFANOVIVAS/star-schema-notes/blob/main/characteristics_of_each_architecture.png)
+![Characteristics of each architecture](https://github.com/STEFANOVIVAS/star-schema-notes/blob/main/images/characteristics_of_each_architecture.png)
 
