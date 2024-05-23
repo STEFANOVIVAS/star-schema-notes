@@ -10,3 +10,14 @@ focus for planning enterprise analytic capability.
 - At a logical level, when a series of stars share a set of common dimensions, the dimensions are referred to as conformed dimensions.
 
 ## Dimensions and Drilling Across
+- Drill-across failure occurs when dimensions differ in their structure or content, extinguishing the possibility of cross-process synergy.
+- Dimension tables need not be identical to support drilling across, since stars do share some common dimension attributes.
+- When the attributes of one are a subset of another, drilling across may also be possible.
+- Corresponding dimension tables should provide consistent results when substituted for one another. In terms of content, this requires that they contain the same set of rows, that corresponding rows share the same surrogate key values, and that slow change processing rules have been applied consistently. 
+
+![Stars common atributes](https://github.com/STEFANOVIVAS/star-schema-notes/blob/main/stars_common_atributes.png)
+
+## Conformed Dimensions
+
+
+
