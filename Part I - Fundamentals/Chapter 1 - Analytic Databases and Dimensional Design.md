@@ -10,7 +10,7 @@ A dimensional design organizes facts and dimensions for storage in a database. I
 - Operational process x Analytical process
 
 
-  ![Operational x Analytical systems](https://github.com/STEFANOVIVAS/star-schema-notes/blob/main/analytical_operational.png)
+  ![Operational x Analytical systems](https://github.com/STEFANOVIVAS/star-schema-notes/blob/main/images/analytical_operational.png)
   
 ### Facts and Dimensions
 
@@ -24,7 +24,7 @@ A dimensional design organizes facts and dimensions for storage in a database. I
 
 A dimensional design for a relational database is called a star schema. Related dimensions are grouped as columns in dimension tables, and the facts are stored as columns in a fact table. The star schema gets its name from its appearance: when drawn with the fact table in the center, it looks like a star or asterisk.
 
-![Operational x Analytical systems](https://github.com/STEFANOVIVAS/star-schema-notes/blob/main/star_schema.png)
+![Operational x Analytical systems](https://github.com/STEFANOVIVAS/star-schema-notes/blob/main/image/star_schema.png)
 
 ### Dimensions tables
 
