@@ -23,8 +23,31 @@ While this approach addresses issues raised by database administrators, it repla
 
 ### Mini-Dimensions Alleviate ETL Bottlenecks and Excessive Growth
 
-A mini-dimension is created by removing a number of the more volatile attributes from the dimension in question and placing them in a new table with its own surrogate key. These attributes share no direct relationship to one another, and there is no natural key. A one-time-only process can populate this table with data by creating a row for each combination of values.
-Unlike the split dimension, the mini-dimension does not share surrogate keys with the original dimension table. There is not a one-to-one relationship between the original dimension and the mini-dimension. Fact tables will carry separate foreign keys which refer to the original dimension table and to the mini-dimension.
-Mini-dimensions do have a potential drawback: they disrupt browsability. The dimension table the mini-dimension are only related via facts.
-It is possible to provide limited browsability between a dimension and mini-dimension by adding a foreign key to the dimension table that refers to the mini-dimension, however, this cross-beowsability is limited to the current information in the mini-dimension. 
+- A mini-dimension is created by removing a number of the more volatile attributes from the dimension in question and placing them in a new table with its own surrogate key. These attributes share no direct relationship to one another, and there is no natural key. A one-time-only process can populate this table with data by creating a row for each combination of values.  
+- Unlike the split dimension, the mini-dimension does not share surrogate keys with the original dimension table. There is not a one-to-one relationship between the original dimension and the mini-dimension. Fact tables will carry separate foreign keys which refer to the original dimension table and to the mini-dimension.
+- Mini-dimensions do have a potential drawback: they disrupt browsability. The dimension table the mini-dimension are only related via facts. It is possible to provide limited browsability between a dimension and mini-dimension by adding a foreign key to the dimension table that refers to the mini-dimension, however, this cross-beowsability is limited to the current information in the mini-dimension. 
+
+## Avoiding the NULL
+- Not part of the set theory on which the relational database is founded, the concept of the NULL was added by vendors as a way to distinguish the absence of data from blank or zero.
+- For dimension attributes, the inelegant but practical solution is to store a specific value such as 0 or “N/A” when data is not available.
+- It is also useful to avoid allowing the NULL as a foreign key value in a fact table.
+
+### Problems Caused by NULL
+
+- Because a NULL does not represent anything, it cannot be considered equal to anything else—not even another NULL. At the same time, a NULL cannot be considered not equal to anything else.
+- If one report shows January sales for tax exempt customers and another shows January sales for customers who are not tax exempt, a reasonable assumption would be that the two figures together represent all of January sales. Unfortunately, this is not the case.
+- Rather than store NULLs in a dimension, star schema designers choose specific values that will be used when a data value is not available. For text columns, the value “N/A” is a trusted standby. For numeric columns, the value 0 is usually chosen, and dates are often defaulted to an arbitrary date in the very far future (more on dates in a moment).
+
+### NULL Foreign Keys in Fact Tables
+- Sometimes, it is not possible to associate a fact with a row in a dimension table. This occurs when the dimension value is unknown or invalid, or the relationship is optional.
+- An example of an optional relationship occurs in retail sales. You may have noticed that in some stores the cashier will note when a salesperson has helped you. This information may be used to evaluate salespeople or to compute their compensation.
+- Avoid allowing NULL values in foreign key columns. They require alternative join syntax and create NULL instance values for dimension columns even when nulls are not stored. This increasing group of workarounds leans heavily on a cadre of experienced
+
+### Avoiding NULL Foreign Key Values
+
+
+
+
+
+
 
