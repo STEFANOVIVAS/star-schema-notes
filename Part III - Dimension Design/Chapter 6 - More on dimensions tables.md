@@ -44,8 +44,12 @@ While this approach addresses issues raised by database administrators, it repla
 - Avoid allowing NULL values in foreign key columns. They require alternative join syntax and create NULL instance values for dimension columns even when nulls are not stored. This increasing group of workarounds leans heavily on a cadre of experienced
 
 ### Avoiding NULL Foreign Key Values
+In addition to the optional relationship, there may be transactions for which the dimension information has not yet been supplied, for which the operational system has recorded invalid information, or for which the dimension represents something that has not yet occurred.
 
-
+- For the optional relationship case, create a special row in the dimension table with a surrogate key value of 0.
+- For the invalid data case, create a special row in the dimension table with a surrogate key value of 0, and row_type as Invalid.
+- For the late-arriving data case, create a special row in the dimension table with a surrogate key value of 1, and row_type as Unknown.
+- For future events cases, when a fact table represents something that may expire, it is useful to record a pair of dates: the date it became effective and the date it expired. In this case, avoid NULLS using a '9999/12/31' pattern for facts that have not expired yet.
 
 
 
