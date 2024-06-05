@@ -8,7 +8,7 @@
 - Less familiar are implicit relationships, which occur when two attributes are located in the same table. Implicit relationships imply a natural affinity between attributes, rather than a relationship that can take many contexts. These relationships tend to be more consistent, and they are browsable. These relationships tend to exist only in a single context, representing a natural affinity rather than one based on process activities. The relationships among attributes in a dimension table may change over time but tend to be less volatile than those of the explicit variety. When implicit relationships do change, their history can be preserved through a type 2 slow change response.  
 
 ## Breaking Up Large Dimensions
-Sometimes, a dimension table becomes so wide that database administrators become concerned about its effect on the database. Such a concern may be purely technical but is completely valid. Very wide rows, for example, may impact the way that the database administrator allocates space or designates block size. When a table has scores of type 2 attributes, incremental updates to the dimension can become a tremendous processing bottleneck.How to deal with them?
+Sometimes, a dimension table becomes so wide that database administrators become concerned about its effect on the database. Such a concern may be purely technical but is completely valid. Very wide rows, for example, may impact the way that the database administrator allocates space or designates block size. When a table has scores of type 2 attributes, incremental updates to the dimension can become a tremendous processing bottleneck. How to deal with them?
 
 ### Splitting Dimension Tables Arbitrarily
 One common solution to the overly long dimension row is a simple separation of attributes into two tables. These two tables use the same surrogate key values, and they share a one-to-one relationship with one another. The excessive row length is split across the two tables, bringing row size back into the comfort zone of the
@@ -25,9 +25,10 @@ While this approach addresses issues raised by database administrators, it repla
 
 - A mini-dimension is created by removing a number of the more volatile attributes from the dimension in question and placing them in a new table with its own surrogate key. These attributes share no direct relationship to one another, and there is no natural key. A one-time-only process can populate this table with data by creating a row for each combination of values.  
 - Unlike the split dimension, the mini-dimension does not share surrogate keys with the original dimension table. There is not a one-to-one relationship between the original dimension and the mini-dimension. Fact tables will carry separate foreign keys which refer to the original dimension table and to the mini-dimension.
-- Mini-dimensions do have a potential drawback: they disrupt browsability. The dimension table the mini-dimension are only related via facts. It is possible to provide limited browsability between a dimension and mini-dimension by adding a foreign key to the dimension table that refers to the mini-dimension, however, this cross-beowsability is limited to the current information in the mini-dimension. 
+- Mini-dimensions do have a potential drawback: they disrupt browsability. The dimension table and mini-dimension are only related via facts. It is possible to provide limited browsability between a dimension and mini-dimension by adding a foreign key to the dimension table that refers to the mini-dimension, however, this cross-browsability is limited to the current information in the mini-dimension. 
 
 ## Avoiding the NULL
+
 - Not part of the set theory on which the relational database is founded, the concept of the NULL was added by vendors as a way to distinguish the absence of data from blank or zero.
 - For dimension attributes, the inelegant but practical solution is to store a specific value such as 0 or “N/A” when data is not available.
 - It is also useful to avoid allowing the NULL as a foreign key value in a fact table.
@@ -39,11 +40,13 @@ While this approach addresses issues raised by database administrators, it repla
 - Rather than store NULLs in a dimension, star schema designers choose specific values that will be used when a data value is not available. For text columns, the value “N/A” is a trusted standby. For numeric columns, the value 0 is usually chosen, and dates are often defaulted to an arbitrary date in the very far future (more on dates in a moment).
 
 ### NULL Foreign Keys in Fact Tables
+
 - Sometimes, it is not possible to associate a fact with a row in a dimension table. This occurs when the dimension value is unknown or invalid, or the relationship is optional.
 - An example of an optional relationship occurs in retail sales. You may have noticed that in some stores the cashier will note when a salesperson has helped you. This information may be used to evaluate salespeople or to compute their compensation.
 - Avoid allowing NULL values in foreign key columns. They require alternative join syntax and create NULL instance values for dimension columns even when nulls are not stored. This increasing group of workarounds leans heavily on a cadre of experienced
 
 ### Avoiding NULL Foreign Key Values
+
 In addition to the optional relationship, there may be transactions for which the dimension information has not yet been supplied, for which the operational system has recorded invalid information, or for which the dimension represents something that has not yet occurred.
 
 - For the optional relationship case, create a special row in the dimension table with a surrogate key value of 0.
@@ -51,7 +54,14 @@ In addition to the optional relationship, there may be transactions for which th
 - For the late-arriving data case, create a special row in the dimension table with a surrogate key value of 1, and row_type as Unknown.
 - For future events cases, when a fact table represents something that may expire, it is useful to record a pair of dates: the date it became effective and the date it expired. In this case, avoid NULLS using a '9999/12/31' pattern for facts that have not expired yet.
 
+## Behavioral Dimensions
 
+A behavioral question is one that groups or filters facts based on the past behavior of members of a dimension. Behavioral dimensions transform facts into dimensions, enabling powerful analytics without complex queries or intensive processing. For example: “Are customers who generate over $1 million in orders
+receiving better discounts than those who generate $500,000 or less?” 
 
+### Designing and Using Behavioral Dimensions
 
+- A behavioral attribute can be used to capture the historic association of a dimension row with information that would normally be stored in the fact table. For example, analysts in the marketing group may want to be able to use the date of a customer’s most recent order to filter queries. Storing this date in the customer table eliminates the necessity to query an orders fact table to find the dates on which each customer last placed an order.
 
+- A behavioral attribute can also capture a fact of historic significance for storage in the dimension table (For example, Annual sales).
+  
