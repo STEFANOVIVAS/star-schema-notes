@@ -22,9 +22,15 @@ It is possible to describe a dimension table as a series of parent-child relatio
 - In addition to helping you configure the drilling feature of business intelligence software, information on attribute hierarchies helps with the design of
 conformed dimensions, cubes, and aggregate tables.
 
-![Operational x Analytical systems](https://github.com/STEFANOVIVAS/star-schema-notes/blob/main/images/attribute_hierarchy2.png)
+![Attribute Hierarchy](https://github.com/STEFANOVIVAS/star-schema-notes/blob/main/images/attribute_hierarchy2.png)
 
 ## Snowflakes
+
+You may find a snowflake configuration appealing because it exposes a natural taxonomy in the data. For those trained in ER modeling, the snowflake reflects some best practices learned in the service of operational systems; however, it is of little utility for an analytic database, aside from saving some space.
+
+![Snowflake](https://github.com/STEFANOVIVAS/star-schema-notes/blob/main/images/snowflake.png)
+
+
 
 
 
