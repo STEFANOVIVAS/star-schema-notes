@@ -1,4 +1,4 @@
-# Hierarchies and Snowflakes
+# Chapter 7 - Hierarchies and Snowflakes
 
 It is possible to describe a dimension table as a series of parent-child relationships among groups of attributes. Days make up months, months fall into quarters, and quarters fall into years, for example. When an attribute hierarchy is instantiated as a series of physical tables, rather than as a single dimension table, the result is a variation of the star schema known as a snowflake. On rare occasions, a limited form of snowflaking is employed to help resolve unmanageable row length or to ensure consistent representation of repeating attributes (Outrigger).
 
