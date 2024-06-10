@@ -44,5 +44,8 @@ This solution has several shortcomings:
 - The dimension table and the bridge can be joined using the group_key; the bridge table is joined to the outrigger in turn.
 - Compared to a solution that simplifies multi-valued attributes, using a bridge table offers increased flexibility and simplifies reporting challenges.
 
-  ### The Impact of Changes
-
+### The Impact of Changes
+- As in any snowflaked situation, the presence of an attribute bridge will require careful attention to the impact of changes in source data, specially a type 2 change.
+- Type 2 changes in an outrigger will require type 2 changes in the dimension and new groups in the bridge table. These can also be supplemented with time stamps, if desired.
+- In cases where the history of changes to group membership is to be maintained, any change to a group will require creating a row in the dimension table that refers to the revised grouping.
+- Last, the dimension table itself may have to respond to changes in source data. In the case of a type 2 change, the new “version” will have a new surrogate key, and, if the multi-valued attributes have not changed, the new row can reuse the same group_key.
