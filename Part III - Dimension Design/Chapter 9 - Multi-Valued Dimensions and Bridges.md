@@ -23,3 +23,26 @@ impossible to model a process in this manner, for example, each order may have m
 - Another way to avoid the danger of double-counting is to hide the bridge from inexperienced users. This is done by supplementing the bridged solution with a simplified solution recognizing only one dimension row. The bridge is hidden from everyone except carefully trained analysts.
 
 ## Multi-Valued Attributes
+
+When a dimension attribute may take on more than one value for any given row in the table, we face a similar design challenge. How does one model an indefinite number of attribute values for a single row in the dimension? Customers have multiple phone numbers, bank accounts have multiple account holders, and so on.
+Like the multi-valued dimension, this challenge can be resolved by simplifying the problem or by using a bridge table.
+
+### Simplifying the Multi-Valued Attribute
+- When you are faced with multi-valued attributes, the first option to consider is simplification of the problem through a technique that is sometimes referred to as “flattening.” Instead of designing a single column to capture the attribute, you can include two or more columns.
+- This approach works best where a limited number of values is acceptable, where each version corresponds to an easily identifiable role, and where it will not be necessary to filter or group transactions in a fact table using values that may occur in any of the columns.  
+This solution has several shortcomings:
+
+    -  The solution is limited to a specific number of values. Later, we may encounter a customer that requires more than three industries.
+    -  Filtering a query for a particular industry will require defining multiple conditions, since the industry in question may appear in any one of the columns.
+    -  Grouping facts by industry will be particularly challenging, since a given industry may appear in any of the three columns.
+
+### Bridging the Relationship
+- A multi-valued attribute can be supported using an attribute bridge table, which works in much the same way as the dimension bridge in the previous section. This time, instead of placing the bridge between fact table and dimension table, the bridge will be placed between the dimension table and an outrigger.
+- The multi-valued attributes are not stored in the dimension table. Instead, they are placed in a separate table with its own surrogate key. This table will act as an outrigger.
+- A bridge table is set up with two columns: a group_key and a second column referring to the outrigger.
+- When a dimension row refers to a specific combination of values in the outrigger, a group is set up for those values in the bridge table.
+- The dimension table and the bridge can be joined using the group_key; the bridge table is joined to the outrigger in turn.
+- Compared to a solution that simplifies multi-valued attributes, using a bridge table offers increased flexibility and simplifies reporting challenges.
+
+  ### The Impact of Changes
+
