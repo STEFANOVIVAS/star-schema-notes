@@ -31,4 +31,13 @@ attributes.
 ![Core and custom](https://github.com/STEFANOVIVAS/star-schema-notes/blob/main/images/core_and_custom.png)
 
 ### Core and Custom Fact Tables
-If there are custom facts that correspond to specific types, then custom fact tables for each type will be necessary. Each custom fact table will contain any core facts, along with type-specific facts. It will contain rows only for the specific type represented.
+- If there are custom facts that correspond to specific types, then custom fact tables for each type will be necessary.
+- Each custom fact table will contain any core facts, along with type-specific facts. It will contain rows only for the specific type represented.
+- When a design involves core and custom dimensions, also include custom versions of fact tables, even if there are no custom facts. This will avoid potential confusion at query time.
+  
+![Custom fact](https://github.com/STEFANOVIVAS/star-schema-notes/blob/main/images/custom_fact.png)
+
+### Other Considerations
+- It may be possible for a particular item to appear in more than one custom dimension table. This occurs when multiple levels of types exist, resulting in overlapping sets of custom attributes.
+- Some designers prefer not to replicate core attributes, opting for a snowflake-like alternative.
+- The core and custom technique can be combined with an attribute hierarchy for powerful effect.
