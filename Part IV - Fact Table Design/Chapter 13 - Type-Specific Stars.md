@@ -21,3 +21,14 @@ attributes.
 - Semantic: A star that consolidates all possible attributes may give rise to nonsensical reports and this is likely to occur when there are type-specific dimensions and facts.
 
 ## Core and Custom Stars
+
+### Core and Custom Dimension Tables
+- When the attributes of a dimension vary by type, and it is impractical or undesirable to build a single table with all possible attributes, the alternative is to build multiple versions of the dimension table.
+- One version will contain only the attributes shared by all subtypes and contain a row for each instance, regardless of type (Core dimension).
+- The remaining versions each correspond to a single type. They contain the core attributes, plus any type-specific attributes (Custom dimension tables).
+- The core product dimension will be called on when the analytic questions look across all product types.
+- The presence of the core attributes in each of the custom dimensions allows access to those attributes when studying a particular type. 
+![Core and custom](https://github.com/STEFANOVIVAS/star-schema-notes/blob/main/images/core_and_custom.png)
+
+### Core and Custom Fact Tables
+If there are custom facts that correspond to specific types, then custom fact tables for each type will be necessary. Each custom fact table will contain any core facts, along with type-specific facts. It will contain rows only for the specific type represented.
